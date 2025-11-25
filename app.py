@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 st.title('Dashboard Restoran: Analisis Menu Makanan')
 st.markdown("""
@@ -47,9 +48,19 @@ st.subheader('Line Chart: Pola Rating')
 st.write('Grafik garis menunjukkan bagaimana rating berubah antar menu. Bantu lihat tren kesukaan.')
 st.line_chart(data.set_index('Food'))
 
-st.subheader('Visualisasi Tambahan')
-st.write('Bar chart hijau menunjukkan rating langsung. Untuk lihat proporsi, gunakan bar chart utama.')
-st.bar_chart(data.set_index('Food'), color='#00FF00')
+st.subheader('Pilih Visualisasi Tambahan')
+tipe = st.selectbox("Pilih chart:", ["Pie Chart (Circle)", "Bar Chart Custom"])
+if tipe == "Pie Chart (Circle)":
+    st.write('Pie chart menunjukkan persentase rating per menu. Bantu lihat proporsi kesukaan.')
+    fig, ax = plt.subplots()
+    ax.pie(data["Rating"], labels=data["Food"], autopct="%1.1f%%")
+    st.pyplot(fig)
+else:
+    st.write('Bar chart hijau menunjukkan rating langsung. Pilih untuk fokus pada perbandingan nilai.')
+    fig, ax = plt.subplots()
+    ax.bar(data["Food"], data["Rating"], color="green")
+    ax.set_ylabel("Rating")
+    st.pyplot(fig)
 
 
 nilai = st.slider("Tampilkan data dengan rating minimum:", 0, 5, 3)
