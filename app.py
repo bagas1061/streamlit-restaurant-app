@@ -9,7 +9,6 @@ Beri rating (1-5), tambahkan deskripsi singkat, dan lokasi dummy untuk memahami 
 Dashboard ini memberikan wawasan tentang menu populer, bandingkan rating, lihat pola tren, proporsi pasar, sebaran lokasi, dan akumulasi preferensi.
 Hal ini membantu pemilik restoran memutuskan fokus menu, optimasi penawaran, dan strategi pemasaran. Terima kasih atas umpan balik Anda!
 """)
-st.image("restoran.png", caption="Restoran Kami - Terima Kasih Atas Kunjungan Anda!")
 
 # Input for 10 foods
 st.header('Input Data 10 Makanan')
